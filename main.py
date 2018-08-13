@@ -16,6 +16,11 @@ class Binary:
 
         return ''.join(str(x) for x in binary)
 
+    @classmethod
+    def convert_decimal(self, number, precision=2):
+        decimal = round(number % 1, precision)
 
-print(Binary.convert(17))
+        return decimal
+
+print(Binary.convert_decimal(17.14))
 # print(",".join(convert_binary(17)))
