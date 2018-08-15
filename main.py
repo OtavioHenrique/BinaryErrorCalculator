@@ -14,13 +14,28 @@ class Binary:
             result = result // 2
             binary.append(remainder)
 
-        return ''.join(str(x) for x in binary)
+
+        aux = ''.join(str(x) for x in binary)
+        return aux[::-1]
 
     @classmethod
-    def convert_decimal(self, number, precision=2):
+    def convert_decimal(self, number, precision=6):
         decimal = round(number % 1, precision)
 
-        return decimal
+        binary = []
 
-print(Binary.convert_decimal(17.14))
+        for x in range(precision):
+            aux = decimal * 2
+            if aux > 1:
+              binary.append(1)
+              decimal = round(aux % 1, precision)
+              continue
+
+            binary.append(0)
+            decimal = aux
+
+        return ''.join(str(x) for x in binary)
+
+# print(Binary.convert(48))
+# print(Binary.convert_decimal(48.45))
 # print(",".join(convert_binary(17)))
