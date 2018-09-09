@@ -1,37 +1,45 @@
 class Binary:
     def __init__(self, number, decimal):
-        self.number = number
-        self.decimal = decimal
+        self._number = number
+        self._decimal = decimal
+
+    @property
+    def number(self):
+        binary = ''.join(str(x) for x in self._number)
+        return binary
+
+    @property
+    def decimal(self):
+        final_decimal = ''.join(str(x) for x in self._decimal)
+        return final_decimal
 
     @classmethod
-    def convert(self, number):
+    def convert(cls, number):
         remainder = None
         binary = []
-        result = number
+        result = int(number)
 
         while result != 0:
             remainder = result % 2
             result = result // 2
             binary.append(remainder)
 
-
-        aux = ''.join(str(x) for x in binary)
-        return aux[::-1]
+        return Binary(binary[::-1], [0])
 
     @classmethod
-    def convert_fractional(self, number, precision=5):
+    def convert_fractional(cls, number, precision=5):
         decimal = round(number % 1, precision)
 
         binary = []
 
-        for x in range(precision):
+        for _ in range(precision):
             aux = decimal * 2
             if aux > 1:
-              binary.append(1)
-              decimal = round(aux % 1, precision)
-              continue
+                binary.append(1)
+                decimal = round(aux % 1, precision)
+                continue
 
             binary.append(0)
             decimal = aux
 
-        return ''.join(str(x) for x in binary)
+        return Binary(number, binary)
