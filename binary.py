@@ -19,7 +19,7 @@ class Binary:
         return aux[::-1]
 
     @classmethod
-    def convert_fractional(self, number, precision=6):
+    def convert_fractional(self, number, precision=5):
         decimal = round(number % 1, precision)
 
         binary = []
@@ -35,7 +35,3 @@ class Binary:
             decimal = aux
 
         return ''.join(str(x) for x in binary)
-
-# print(Binary.convert(48))
-# print(Binary.convert_decimal(48.45))
-# print(",".join(convert_binary(17)))
