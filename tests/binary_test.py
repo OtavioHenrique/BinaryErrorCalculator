@@ -1,6 +1,6 @@
 from unittest import TestCase
 import random
-from binary import Binary
+from binary_error_calculator.binary import Binary
 
 class BinaryConversionInteger(TestCase):
     """
