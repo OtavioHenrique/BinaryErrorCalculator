@@ -26,8 +26,22 @@ class MaxApproximation(TestCase):
     """
     def test_valid_max_approximation(self):
         binary = Binary([0], [0, 0, 1, 0, 1])
+        max_approximation = binary.max_approximation()
 
-        self.assertEqual(binary.max_approximation(), '00110')
+        self.assertEqual(max_approximation.decimal, '00110')
+
+class Sum(TestCase):
+    """
+    Test the sum between two binary numbers
+    """
+    def test_valid_sum(self):
+        binary = Binary([0], [0, 0, 1, 0, 1])
+        binary2 = Binary([0], [1])
+
+        binary_result = binary + binary2
+
+        self.assertEqual(binary_result.decimal, '00110')
+
 
 if __name__ == '__main__':
     unittest.main()
