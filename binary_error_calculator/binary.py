@@ -5,13 +5,11 @@ class Binary:
 
     @property
     def number(self):
-        binary = ''.join(str(x) for x in self._number)
-        return binary
+        return ''.join(str(x) for x in self._number)
 
     @property
     def decimal(self):
-        final_decimal = ''.join(str(x) for x in self._decimal)
-        return final_decimal
+        return ''.join(str(x) for x in self._decimal)
 
     def max_approximation(self):
         number = self.add(self.__normalize(self._decimal, [1]))
