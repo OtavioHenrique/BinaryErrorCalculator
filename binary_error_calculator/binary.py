@@ -21,7 +21,14 @@ class Binary:
 
     def max_approximation(self):
         """Returns the max approximation of a binary number (number + 1)"""
-        return self + Binary([0],[1])
+        return self + Binary([0], [1])
+
+    def as_decimal(self):
+        """Returns the decimal representation of self (Binary)"""
+        converted_decimal_part = self._decimal_as_decimal()
+        converted_integer_part = self._integer_as_decimal()
+
+        return converted_decimal_part + converted_integer_part
 
     def __add__(self, number):
         """
@@ -40,19 +47,19 @@ class Binary:
 
         rest = 0
 
-        for index in range(len(decimal_number)):
-            sum = number[index] + decimal_number[index] + rest
+        for index, _ in enumerate(decimal_number):
+            binary_sum = number[index] + decimal_number[index] + rest
 
-            if sum == 0:
+            if binary_sum == 0:
                 final_number.append(0)
                 rest = 0
-            elif sum == 1:
+            elif binary_sum == 1:
                 final_number.append(1)
                 rest = 0
-            elif sum == 2:
+            elif binary_sum == 2:
                 final_number.append(0)
                 rest = 1
-            elif sum == 3:
+            elif binary_sum == 3:
                 final_number.append(1)
                 rest = 1
 
@@ -107,9 +114,24 @@ class Binary:
 
         return Binary(number, binary)
 
-    def _normalize(self, number1, number2):
+    def _normalize(self, number1, number2): #This is not working at all cases, must compare two numbers before normalize
         final_number = number2[0]
         for _ in range(len(number1) - len(number2)):
             final_number.insert(0, 0)
+
+        return final_number
+
+    def _integer_as_decimal(self):
+        final_number = 0
+        for position, number in enumerate(self._number[::-1]):
+            final_number += number * pow(2, position)
+
+        return final_number
+
+    def _decimal_as_decimal(self):
+        final_number = 0
+
+        for position, number in enumerate(self._decimal, 1):
+            final_number += number * pow(2, -position)
 
         return final_number
