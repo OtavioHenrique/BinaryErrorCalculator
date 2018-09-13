@@ -65,54 +65,6 @@ class Binary:
 
         return Binary([0], final_number[::-1])
 
-    @classmethod
-    def convert(cls, number):
-        """
-        Convert number to binary
-
-        Args:
-            number: Integer number to be converted
-
-        Returns:
-            A instance of binary class with binary number
-        """
-        remainder = None
-        binary = []
-        result = int(number)
-
-        while result != 0:
-            remainder = result % 2
-            result = result // 2
-            binary.append(remainder)
-
-        return Binary(binary[::-1])
-
-    @classmethod
-    def convert_fractional(cls, number, precision=5):
-        """
-        Convert a number with decimal part to binary
-
-        Args:
-            number: Number to be converted
-
-        Returns:
-            A instance of binary class with binary number
-        """
-        decimal = round(number % 1, precision)
-
-        binary = []
-
-        for _ in range(precision):
-            aux = decimal * 2
-            if aux > 1:
-                binary.append(1)
-                decimal = round(aux % 1, precision)
-                continue
-
-            binary.append(0)
-            decimal = aux
-
-        return Binary(number, binary)
 
     def _normalize(self, number1, number2): #This is not working at all cases, must compare two numbers before normalize
         final_number = number2[0]
