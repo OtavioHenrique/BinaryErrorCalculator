@@ -5,7 +5,7 @@ class Binary:
         _number (:obj:`list` of str): List representing the integer part of binary number
         _decimal (:obj:`list` of str): List representing the decimal part of binary number.
     """
-    def __init__(self, number, decimal=[0]):
+    def __init__(self, *, number, decimal):
         self._number = number
         self._decimal = decimal
 

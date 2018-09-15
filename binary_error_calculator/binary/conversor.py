@@ -3,6 +3,12 @@ class Conversor:
         self.number = number
         self.precision = precision
 
+    def convert(self):
+        integer = self._integer_to_binary()
+        decimal = self._decimal_to_binary()
+
+        return Binary(number=integer, decimal=decimal)
+
     def convert_integer(self):
         """
         Converts integer part of number to binary
