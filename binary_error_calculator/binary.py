@@ -31,11 +31,15 @@ class Binary:
         Sum two binary numbers
 
         Args:
-            number: The number to be add
+            number: The number to be add (As binary instance)
 
         Returns:
             The final binary resulting by the sum
         """
+        return self._sum(number)
+
+
+    def _sum(self, number):
         number = self._normalize(self._decimal, [number._decimal])
         final_number = []
         decimal_number = self._decimal[::-1]
@@ -60,7 +64,6 @@ class Binary:
                 rest = 1
 
         return Binary(number=[0], decimal=final_number[::-1])
-
 
     def _normalize(self, number1, number2): #This is not working at all cases, must compare two numbers before normalize
         final_number = number2[0]
