@@ -5,7 +5,7 @@ class Binary:
         _number (:obj:`list` of str): List representing the integer part of binary number
         _decimal (:obj:`list` of str): List representing the decimal part of binary number.
     """
-    def __init__(self, number, decimal=[0]):
+    def __init__(self, *, number, decimal):
         self._number = number
         self._decimal = decimal
 
@@ -18,10 +18,6 @@ class Binary:
     def decimal(self):
         """str: Represents decimal part of binary number as string."""
         return ''.join(str(x) for x in self._decimal)
-
-    def max_approximation(self):
-        """Returns the max approximation of a binary number (number + 1)"""
-        return self + Binary([0], [1])
 
     def as_decimal(self):
         """Returns the decimal representation of self (Binary)"""
@@ -63,56 +59,8 @@ class Binary:
                 final_number.append(1)
                 rest = 1
 
-        return Binary([0], final_number[::-1])
+        return Binary(number=[0], decimal=final_number[::-1])
 
-    @classmethod
-    def convert(cls, number):
-        """
-        Convert number to binary
-
-        Args:
-            number: Integer number to be converted
-
-        Returns:
-            A instance of binary class with binary number
-        """
-        remainder = None
-        binary = []
-        result = int(number)
-
-        while result != 0:
-            remainder = result % 2
-            result = result // 2
-            binary.append(remainder)
-
-        return Binary(binary[::-1])
-
-    @classmethod
-    def convert_fractional(cls, number, precision=5):
-        """
-        Convert a number with decimal part to binary
-
-        Args:
-            number: Number to be converted
-
-        Returns:
-            A instance of binary class with binary number
-        """
-        decimal = round(number % 1, precision)
-
-        binary = []
-
-        for _ in range(precision):
-            aux = decimal * 2
-            if aux > 1:
-                binary.append(1)
-                decimal = round(aux % 1, precision)
-                continue
-
-            binary.append(0)
-            decimal = aux
-
-        return Binary(number, binary)
 
     def _normalize(self, number1, number2): #This is not working at all cases, must compare two numbers before normalize
         final_number = number2[0]
