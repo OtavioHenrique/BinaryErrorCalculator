@@ -66,7 +66,11 @@ class Binary:
         return Binary([0], final_number[::-1])
 
     @classmethod
-    def convert(cls, number):
+    def convert(cls, number, *, precision=5):
+        decimal = cls.__extract_decimal(number)
+        integer = cls.__extract_integer(number)
+
+    def __convert_integer(cls, number):
         """
         Convert number to binary
 
@@ -87,8 +91,7 @@ class Binary:
 
         return Binary(binary[::-1])
 
-    @classmethod
-    def convert_fractional(cls, number, precision=5):
+    def __convert_fractional(cls, number, precision=5):
         """
         Convert a number with decimal part to binary
 
@@ -98,7 +101,7 @@ class Binary:
         Returns:
             A instance of binary class with binary number
         """
-        decimal = round(number % 1, precision)
+        decimal = self.__extract_decimal(number)
 
         binary = []
 
@@ -114,6 +117,12 @@ class Binary:
 
         return Binary(number, binary)
 
+    def __extract_decimal(self, number, *, precision=5):
+        return round(number % 1, precision)
+
+    def __extract_integer(self, number, *, precision=5):
+        return int(number)
+
     def _normalize(self, number1, number2): #This is not working at all cases, must compare two numbers before normalize
         final_number = number2[0]
         for _ in range(len(number1) - len(number2)):
@@ -121,7 +130,7 @@ class Binary:
 
         return final_number
 
-    def _integer_as_decimal(self):
+    def _integer_as_decimal(self): #maybe private methods should start with __
         final_number = 0
         for position, number in enumerate(self._number[::-1]):
             final_number += number * pow(2, position)
