@@ -1,3 +1,5 @@
+from .binary import Binary
+
 class Conversor:
     def __init__(self, *, number, precision=5):
         self.number = number
