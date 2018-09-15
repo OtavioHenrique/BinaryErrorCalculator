@@ -19,10 +19,6 @@ class Binary:
         """str: Represents decimal part of binary number as string."""
         return ''.join(str(x) for x in self._decimal)
 
-    def max_approximation(self):
-        """Returns the max approximation of a binary number (number + 1)"""
-        return self + Binary([0], [1])
-
     def as_decimal(self):
         """Returns the decimal representation of self (Binary)"""
         converted_decimal_part = self._decimal_as_decimal()
@@ -63,7 +59,7 @@ class Binary:
                 final_number.append(1)
                 rest = 1
 
-        return Binary([0], final_number[::-1])
+        return Binary(number=[0], decimal=final_number[::-1])
 
 
     def _normalize(self, number1, number2): #This is not working at all cases, must compare two numbers before normalize
