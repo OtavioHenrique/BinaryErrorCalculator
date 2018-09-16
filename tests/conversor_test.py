@@ -1,5 +1,6 @@
 from unittest import TestCase
 from binary_error_calculator.conversor import Conversor
+from binary_error_calculator.binary import Binary
 
 
 class BinaryConversionInteger(TestCase):
@@ -32,3 +33,4 @@ class BinaryConversion(TestCase):
 
         self.assertEqual(binary.number, '11000000110111')
         self.assertEqual(binary.decimal, '00101')
+        self.assertIsInstance(binary, Binary)
