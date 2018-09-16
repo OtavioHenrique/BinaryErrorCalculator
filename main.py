@@ -9,16 +9,21 @@ while( number <= 0 or number >= 1):
 for precision in range(5, 12+1):
 
     binary = Conversor(number=number, precision=precision).convert()
+    error_percent_min_apprx = ExperimentalErrorCalculator(
+                                  known_value = number,
+                                  experimental_value = binary.as_decimal()
+                              ).calculate()
 
     max_approximation = MaxApproximation.calculate(binary)
-    error_percent = ExperimentalErrorCalculator(
-                        known_value = number,
-                        experimental_value = max_approximation.as_decimal()
-                    ).calculate()
+    error_percent_max_apprx = ExperimentalErrorCalculator(
+                                  known_value = number,
+                                  experimental_value = max_approximation.as_decimal()
+                              ).calculate()
 
     print('--------------------------------------------')
     print(f"Calculating for {precision} decimal places of precision.")
     print(f"Minimum Approximation {binary.as_decimal()}")
+    print(f"Error Percentage for minimum approximation: {str(error_percent_min_apprx)}")
     print(f"Maximum Approximation {max_approximation.as_decimal()}")
-    print(f"Error Percentage: {str(error_percent)}")
+    print(f"Error Percentage for maximum approximation: {str(error_percent_max_apprx)}")
     print('--------------------------------------------')
