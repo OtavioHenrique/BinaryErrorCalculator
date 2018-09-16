@@ -4,6 +4,7 @@ from binary_error_calculator.experimental_error_calculator \
 
 
 class ExperimentalErrorCalculatorTest(TestCase):
+    """Test the correct calculus"""
     def test_correct_calculus(self):
         known_value = 0.17
         experimental_value = 0.1875
