@@ -42,15 +42,17 @@ class Binary:
         return self._sum(number)
 
     def _sum(self, number):
-        number = self._normalize(self._decimal, [number._decimal])
+        bigger_number, lower_number = self._normalize(number._decimal)
+
         final_number = []
-        decimal_number = self._decimal[::-1]
-        number = number[::-1]
+
+        bigger_number = bigger_number[::-1]
+        lower_number = lower_number[::-1]
 
         rest = 0
 
-        for index, _ in enumerate(decimal_number):
-            binary_sum = number[index] + decimal_number[index] + rest
+        for index, _ in enumerate(bigger_number):
+            binary_sum = lower_number[index] + bigger_number[index] + rest
 
             if binary_sum == 0:
                 final_number.append(0)
@@ -67,12 +69,18 @@ class Binary:
 
         return Binary(number=[0], decimal=final_number[::-1])
 
-    def _normalize(self, number1, number2):
-        final_number = number2[0]
-        for _ in range(len(number1) - len(number2)):
-            final_number.insert(0, 0)
+    def _normalize(self, number):
+        if len(self._decimal) > len(number):
+            lower_number = number
+            bigger_number = self._decimal
+        else:
+            lower_number = self._decimal
+            bigger_number = number
 
-        return final_number
+        for _ in range(len(bigger_number) - len(lower_number)):
+            lower_number.insert(0, 0)
+
+        return (bigger_number, lower_number)
 
     def _integer_as_decimal(self):
         final_number = 0

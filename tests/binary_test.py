@@ -4,13 +4,23 @@ from binary_error_calculator.binary import Binary
 
 class SumTest(TestCase):
     """Test the sum between two binary numbers"""
-    def test_valid_sum(self):
+    def test_valid_sum_with_greater_first_number(self):
         binary = Binary(number=[0], decimal=[0, 0, 1, 0, 1])
         binary2 = Binary(number=[0], decimal=[1])
 
         binary_result = binary + binary2
 
         self.assertEqual(binary_result.decimal, '00110')
+        self.assertEqual(binary_result.number, '0')
+
+    def test_valid_sum_with_smaller_first_number(self):
+        binary = Binary(number=[0], decimal=[1])
+        binary2 = Binary(number=[0], decimal=[0, 0, 1, 0, 1])
+
+        binary_result = binary + binary2
+
+        self.assertEqual(binary_result.decimal, '00110')
+        self.assertEqual(binary_result.number, '0')
 
 
 class AsDecimalTest(TestCase):
