@@ -1,9 +1,12 @@
 class Binary:
-    """This class is a representation of a binary number
+    """
+    This class is a representation of a binary number
 
     Args:
-        _number (:obj:`list` of str): List representing the integer part of binary number
-        _decimal (:obj:`list` of str): List representing the decimal part of binary number.
+         _number (:obj:`list` of str):
+             List representing the integer part of binary number.
+         _decimal (:obj:`list` of str):
+             List representing the decimal part of binary number.
     """
     def __init__(self, *, number, decimal):
         self._number = number
@@ -38,7 +41,6 @@ class Binary:
         """
         return self._sum(number)
 
-
     def _sum(self, number):
         number = self._normalize(self._decimal, [number._decimal])
         final_number = []
@@ -65,7 +67,7 @@ class Binary:
 
         return Binary(number=[0], decimal=final_number[::-1])
 
-    def _normalize(self, number1, number2): #This is not working at all cases, must compare two numbers before normalize
+    def _normalize(self, number1, number2):
         final_number = number2[0]
         for _ in range(len(number1) - len(number2)):
             final_number.insert(0, 0)

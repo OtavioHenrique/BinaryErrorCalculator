@@ -1,6 +1,7 @@
 from binary_error_calculator.conversor import Conversor
 from binary_error_calculator.binary import Binary
 
+
 class MaxApproximation:
     @classmethod
     def calculate(cls, number):

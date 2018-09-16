@@ -1,6 +1,7 @@
 from unittest import TestCase
 from binary_error_calculator.conversor import Conversor
 
+
 class BinaryConversionInteger(TestCase):
     """
     Test conversion of integer to binary is correct
@@ -10,6 +11,7 @@ class BinaryConversionInteger(TestCase):
 
         self.assertEqual(conversor.convert_integer(), '11000000110111')
 
+
 class BinaryConversionDecimal(TestCase):
     """
     Test conversion of decimal number to binary is correct
@@ -18,6 +20,7 @@ class BinaryConversionDecimal(TestCase):
         conversor = Conversor(number=0.17, precision=5)
 
         self.assertEqual(conversor.convert_decimal(), '00101')
+
 
 class BinaryConversion(TestCase):
     """

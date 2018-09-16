@@ -1,11 +1,22 @@
 from .binary import Binary
 
+
 class Conversor:
+    """
+    This class converts decimal number to binary number
+
+    Args:
+         _number (:obj:`integer/decimal`):
+             Number to be converted.
+         _decimal (:obj:`integer`):
+             Integer representing the decimal precision.
+    """
     def __init__(self, *, number, precision=5):
         self.number = number
         self.precision = precision
 
     def convert(self):
+        """Converts number to binary and returns a instance of Binary class"""
         integer = self._integer_to_binary()
         decimal = self._decimal_to_binary()
 

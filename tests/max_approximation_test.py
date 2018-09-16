@@ -2,6 +2,7 @@ from unittest import TestCase
 from binary_error_calculator.binary import Binary
 from binary_error_calculator.max_approximation import MaxApproximation
 
+
 class MaxApproximationTest(TestCase):
     """
     Test if it's return the right max approximation of the binary number
