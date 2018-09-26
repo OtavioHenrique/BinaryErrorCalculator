@@ -56,6 +56,9 @@ class Conversor:
         binary = []
         result = self._integer()
 
+        if self._integer() == 0:
+            return [0]
+
         while result != 0:
             remainder = result % 2
             result = result // 2
