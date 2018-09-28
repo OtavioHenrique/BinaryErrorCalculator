@@ -29,6 +29,10 @@ class Binary:
 
         return converted_decimal_part + converted_integer_part
 
+    def __str__(self):
+        "Representation of the class as string"
+        return self.number + "." + self.decimal
+
     def __add__(self, number):
         """
         Sum two binary numbers
